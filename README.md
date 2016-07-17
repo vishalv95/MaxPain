@@ -1,3 +1,7 @@
+## Max Pain Theory Strategy 
+
+Max pain theory postulates that the price of underlying has a tendency to gravitate towards a point where the maximum number of options expire worthless. Using historical open interest data, we are backtesting to see if we can identify companies where the max pain theory holds true. For qualifying companies, we could enter stock positions according to where the open interest data predicts the underlying price to be on the third week of each month. 
+
 #### Algorithm Overview
 1. Get historical options data (underlying, expiration, strikes, open interest) for all tickers in SP500, and underlying data
 2. Clean Bloomberg data 
@@ -19,3 +23,4 @@
 + Scrape options data from Bloomberg
 + Reduce data pull to a tractable set 
 + Write test cases for helper functions in backtest.py
++ Add trade logic in handle_data() 
