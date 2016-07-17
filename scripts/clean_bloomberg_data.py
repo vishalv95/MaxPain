@@ -9,6 +9,7 @@ def get_tickers():
 	return open('../data/sp500_tickers.txt','rb').read().splitlines()
 
 def load_raw(filename):
+	
 	pass
 
 def get_underlying(cell):
