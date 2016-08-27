@@ -24,6 +24,7 @@ def initialize(context):
 	context.options['date'] = pd.to_datetime(context.options['date'])
 	context.options['expiration'] = pd.to_datetime(context.options['expiration'])
 
+
 # (7) Trade
 def handle_data(context, data):
 	# check if the spot is outside CI of MPP
@@ -51,6 +52,7 @@ def call_otm(df, ticker, date):
 	
 	return copy_df
 
+
 # (4) Compute cumulative open interest sum for OTM call options at each strike 
 def put_otm(df, ticker, date):
 	copy_df = df
@@ -67,13 +69,11 @@ def put_otm(df, ticker, date):
 def max_pain_strike(call_sums, put_sums):
 	cumulative = call_sums.join(put_sums, on = 'strike', how = 'inner')
 	cumulative['cp_sum'] = cumulative['cumsum_c'] + cumulative['cumsum_p']
-	mpp = cumulative.ix[cumulative['cp_sum'].idxmax()]['strike']
-	
+	mpp = cumulative.ix[cumulative['cp_sum'].idxmax()]['strike']	
 	return mpp
 
 def add_to_window(context, window_size, datapoint, ticker):
 	tw = context.target_window[ticker]
-
 	tw.append(datapoint)
 	context.target_window[ticker] = tw[-window_size:] if len(tw) > window_size else tw
 	

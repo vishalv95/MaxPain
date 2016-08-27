@@ -19,8 +19,6 @@ def historical_dates():
 				i += 1
 	return dates
 
-#stole this from stack overflow; not sure h
-w it works
 def is_third_friday(date):
 	try:
 		d = datetime.strptime(date, "%m/%d/%Y")
