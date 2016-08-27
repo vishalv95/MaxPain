@@ -9,7 +9,7 @@ def get_tickers(filename):
 
 def save_ts(ticker_file):
 	for stock in get_tickers(ticker_file):
-		print stock
+		if stock != 'FB': continue 
 		start = datetime.strptime("1/1/1975", "%m/%d/%Y")
 		end = datetime.today()
 		try:
@@ -19,6 +19,7 @@ def save_ts(ticker_file):
 			f.to_csv('../data/underlying/' + stock + '.csv')
 		except:
 			continue
+	
 
 if __name__ == '__main__':
 	save_ts('../data/sp500_tickers.txt')
